@@ -1,6 +1,6 @@
 # go-refine-template
 
-Go 单二进制 + Refine 管理台应用模板。提供契约生成的管理 API、Cookie 会话、安装引导、嵌入 SPA 与 CLI 生命周期（`init` / `serve` / `stop` / `restart` / `reload`），方便新产品从同一套分层与运维约定起步。
+Go 单二进制 + Refine 管理台应用模板。提供契约生成的管理 API、Cookie 会话、安装引导、用户管理、邮件邀请 / 密码重置、嵌入 SPA 与 CLI 生命周期（`init` / `serve` / `stop` / `restart` / `reload`），方便新产品从同一套分层与运维约定起步。
 
 用 GitHub **Use this template** 创建新仓库后，按 [AGENTS.md](./AGENTS.md) 替换模块路径与品牌名即可开写业务。
 
@@ -10,21 +10,25 @@ Go 单二进制 + Refine 管理台应用模板。提供契约生成的管理 API
 |---|---|
 | 契约生成 | `internal/contract` + `contractgen` → `direct` / `/api` 路由 / 前端 `api/generated` |
 | 会话管理台 | Cookie 登录注册、安装状态、注册开关、`/api/me`、首用户为 admin |
+| 用户与邀请 | 用户 CRUD / 禁用、邀请注册、密码重置（Resend） |
+| 站点设置 | `settings` 站点名与开放注册；注册入口随开关隐藏 |
 | sysdoc | `settings` / `state` 按名读写 |
-| 配置 | yaml 基础设施；`init` 可读 `.env` |
-| 前端 | Refine + refine-ui / shadcn、i18n、profile 表单范例 |
+| 配置 | yaml 基础设施（含邮件）；`init` 可读 `.env` |
+| 前端 | Refine + refine-ui / shadcn、i18n、profile / settings / users 范例 |
 | 运维 | Postgres 迁移、PID、Docker Compose、CI、集成测试基建（`TEST_POSTGRES_*`） |
 
 ## 本地开发
 
 ```bash
 # 准备 Postgres（库名、用户见 .env.example / docker-compose）
-cp .env.example .env   # 按需改端口
+cp .env.example .env   # 按需改端口与 EMAIL_*
 go run . init          # 写出 config.yaml
-make dev               # 后端 serve + 前端 Vite
+make dev backend       # 后端（另开终端；含契约生成）
+make dev frontend      # 管理台 Vite
+go run . stop          # 停止后端
 ```
 
-常用命令：`make generate`、`make build`、`make build amd64`。
+常用命令：`make build`、`make build amd64`（`build` 内会跑契约生成）。
 
 联调管理员（首次注册即为 admin）：用户名 `Admin`，邮箱 `admin@example.com`，密码 `12345678`。
 
@@ -35,7 +39,7 @@ make dev               # 后端 serve + 前端 Vite
 3. 需要对外 API 时扩 `/v1/*`（不走契约生成）。
 4. 异步队列 / 实时通道按需接入，勿作为启动硬依赖。
 
-分层约定见 [AGENTS.md](./AGENTS.md)。业务写在 `internal/actions/<域>`；Cookie 会话与 `/v1/*` 手写。
+分层约定见 [AGENTS.md](./AGENTS.md)。业务写在 `internal/actions/<域>`；Cookie 会话、密码重置与 `/v1/*` 手写。
 
 ## 非目标（留给各产品）
 

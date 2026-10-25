@@ -12,3 +12,7 @@ postgres:
   sslmode: disable
 log:
   dir: /var/log/go-refine-template
+email:
+  from: ""
+  resend:
+    api_key: ""
