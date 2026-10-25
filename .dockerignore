@@ -1,0 +1,3 @@
+*
+!build/app-template-linux-amd64
+!build/app-template-linux-arm64

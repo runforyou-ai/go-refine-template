@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+build/
+.env
+data/logs/
+*.pid
+frontend/dist/

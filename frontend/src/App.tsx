@@ -1,0 +1,132 @@
+import { Authenticated, Refine, type I18nProvider } from "@refinedev/core";
+import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import {
+  LayoutDashboard,
+  Settings,
+} from "lucide-react";
+import { useTranslation } from "react-i18next";
+
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router";
+import routerProvider, {
+  CatchAllNavigate,
+  DocumentTitleHandler,
+  UnsavedChangesNotifier,
+} from "@refinedev/react-router";
+import { dataProvider } from "./providers/data";
+import { authProvider } from "./providers/auth";
+import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
+import { Toaster } from "./components/refine-ui/notification/toaster";
+import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
+import { Layout } from "./components/refine-ui/layout/layout";
+import { ErrorComponent } from "./components/refine-ui/layout/error-component";
+import { DashboardPage } from "./pages/dashboard";
+import { ProfilePage } from "./pages/profile";
+import { SettingsPage } from "./pages/settings";
+import { SignInPage } from "./pages/sign-in";
+import { SignUpPage } from "./pages/sign-up";
+import { WelcomePage } from "./pages/welcome";
+import "./i18n";
+import "./App.css";
+
+const CONSOLE_PREFIX = "/console";
+
+function App() {
+  const { t, i18n } = useTranslation();
+
+  const i18nProvider: I18nProvider = {
+    translate: (key: string, options?: Record<string, unknown>) =>
+      String(t(key, options)),
+    changeLocale: (lang: string) => i18n.changeLanguage(lang),
+    getLocale: () => i18n.resolvedLanguage ?? i18n.language,
+  };
+
+  return (
+    <BrowserRouter>
+      <RefineKbarProvider>
+        <ThemeProvider>
+          <DevtoolsProvider>
+            <Refine
+              dataProvider={dataProvider}
+              authProvider={authProvider}
+              i18nProvider={i18nProvider}
+              notificationProvider={useNotificationProvider()}
+              routerProvider={routerProvider}
+              resources={[
+                {
+                  name: "dashboard",
+                  list: CONSOLE_PREFIX,
+                  meta: {
+                    label: t("resources.dashboard"),
+                    icon: <LayoutDashboard className="h-4 w-4" />,
+                  },
+                },
+                {
+                  name: "settings",
+                  list: `${CONSOLE_PREFIX}/settings`,
+                  meta: {
+                    label: t("resources.settings"),
+                    icon: <Settings className="h-4 w-4" />,
+                  },
+                },
+                {
+                  name: "profile",
+                  list: `${CONSOLE_PREFIX}/profile`,
+                  meta: {
+                    label: t("profile.title"),
+                    hide: true,
+                  },
+                },
+              ]}
+              options={{
+                syncWithLocation: true,
+                warnWhenUnsavedChanges: true,
+                title: {
+                  text: "App",
+                },
+              }}
+            >
+              <Routes>
+                <Route index element={<WelcomePage />} />
+                <Route path="/login" element={<SignInPage />} />
+                <Route path="/register" element={<SignUpPage />} />
+                <Route
+                  path={CONSOLE_PREFIX}
+                  element={
+                    <Authenticated
+                      key="authenticated"
+                      fallback={<CatchAllNavigate to="/login" />}
+                    >
+                      <Layout>
+                        <Outlet />
+                      </Layout>
+                    </Authenticated>
+                  }
+                >
+                  <Route index element={<DashboardPage />} />
+                  <Route path="settings" element={<SettingsPage />} />
+                  <Route path="profile" element={<ProfilePage />} />
+                  <Route path="*" element={<ErrorComponent />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+              <Toaster />
+              <RefineKbar />
+              <UnsavedChangesNotifier />
+              <DocumentTitleHandler />
+            </Refine>
+            <DevtoolsPanel />
+          </DevtoolsProvider>
+        </ThemeProvider>
+      </RefineKbarProvider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
