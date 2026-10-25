@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/runforyou-ai/app-template/internal/auth"
-	"github.com/runforyou-ai/app-template/internal/model"
+	"github.com/runforyou-ai/go-refine-template/internal/auth"
+	"github.com/runforyou-ai/go-refine-template/internal/model"
 	"github.com/runforyou-ai/support/str"
 	"github.com/uptrace/bun"
 )

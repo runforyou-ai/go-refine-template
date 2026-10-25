@@ -54,5 +54,5 @@ internal/integrationtest/
 ## 从本模板创建新项目
 
 1. 用 GitHub「Use this template」生成仓库。
-2. 全局替换模块路径 `github.com/runforyou-ai/app-template`、二进制名 `app-template`、站点默认名（`sysdoc.DefaultSite`、前端 `title`）。
+2. 全局替换模块路径 `github.com/runforyou-ai/go-refine-template`、二进制名 `go-refine-template`、站点默认名（`sysdoc.DefaultSite`、前端 `title`）。
 3. `go mod tidy` → `make generate` → `make build`。

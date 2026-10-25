@@ -5,9 +5,9 @@ import (
 	"errors"
 	"net/http"
 
-	actionauth "github.com/runforyou-ai/app-template/internal/actions/auth"
-	"github.com/runforyou-ai/app-template/internal/actions/installation"
-	"github.com/runforyou-ai/app-template/internal/contract"
+	actionauth "github.com/runforyou-ai/go-refine-template/internal/actions/auth"
+	"github.com/runforyou-ai/go-refine-template/internal/actions/installation"
+	"github.com/runforyou-ai/go-refine-template/internal/contract"
 	"github.com/uptrace/bun"
 )
 

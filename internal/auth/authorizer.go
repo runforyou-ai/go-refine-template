@@ -6,8 +6,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/runforyou-ai/app-template/internal/domain"
-	"github.com/runforyou-ai/app-template/internal/model"
+	"github.com/runforyou-ai/go-refine-template/internal/domain"
+	"github.com/runforyou-ai/go-refine-template/internal/model"
 	"github.com/uptrace/bun"
 )
 

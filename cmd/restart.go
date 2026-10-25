@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/runforyou-ai/app-template/internal/process"
+	"github.com/runforyou-ai/go-refine-template/internal/process"
 	"github.com/spf13/cobra"
 )
 

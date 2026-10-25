@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/runforyou-ai/app-template/internal/config"
-	"github.com/runforyou-ai/app-template/internal/process"
+	"github.com/runforyou-ai/go-refine-template/internal/config"
+	"github.com/runforyou-ai/go-refine-template/internal/process"
 	"github.com/spf13/cobra"
 )
 

@@ -1,4 +1,4 @@
-module github.com/runforyou-ai/app-template
+module github.com/runforyou-ai/go-refine-template
 
 go 1.27.1
 

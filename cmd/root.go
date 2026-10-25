@@ -7,7 +7,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "app-template",
+	Use:   "go-refine-template",
 	Short: "Go + Refine 应用骨架",
 	Long:  "单二进制应用模板：契约生成管理 API、Cookie 会话管理台、嵌入 SPA、CLI 生命周期。",
 }

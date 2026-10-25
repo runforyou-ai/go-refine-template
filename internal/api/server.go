@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/runforyou-ai/app-template/internal/direct"
-	"github.com/runforyou-ai/app-template/internal/web"
+	"github.com/runforyou-ai/go-refine-template/internal/direct"
+	"github.com/runforyou-ai/go-refine-template/internal/web"
 	"github.com/uptrace/bun"
 )
 

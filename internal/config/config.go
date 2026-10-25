@@ -19,9 +19,9 @@ const (
 	// EnvProduction 生产环境（影响日志等默认路径）。
 	EnvProduction = "production"
 
-	appDirName = "app-template"
+	appDirName = "go-refine-template"
 	configName = "config.yaml"
-	pidName    = "app-template.pid"
+	pidName    = "go-refine-template.pid"
 	dotEnvName = ".env"
 )
 
@@ -67,9 +67,9 @@ func Default() Config {
 		Postgres: PostgresConfig{
 			Host:     "127.0.0.1",
 			Port:     5432,
-			User:     "app-template",
-			Password: "app-template",
-			Database: "app-template",
+			User:     "go-refine-template",
+			Password: "go-refine-template",
+			Database: "go-refine-template",
 			SSLMode:  "disable",
 		},
 		Log: LogConfig{},

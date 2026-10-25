@@ -22,7 +22,7 @@ void i18n
       // 手动切换写入 localStorage；无记录时再按浏览器语言
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
-      lookupLocalStorage: "app-template.lng",
+      lookupLocalStorage: "go-refine-template.lng",
     },
   })
 

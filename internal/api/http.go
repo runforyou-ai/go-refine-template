@@ -7,8 +7,8 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/runforyou-ai/app-template/internal/contract"
-	"github.com/runforyou-ai/app-template/internal/direct"
+	"github.com/runforyou-ai/go-refine-template/internal/contract"
+	"github.com/runforyou-ai/go-refine-template/internal/direct"
 )
 
 func requestMeta(r *http.Request) contract.RequestMeta {

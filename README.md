@@ -1,4 +1,4 @@
-# app-template
+# go-refine-template
 
 Go 单二进制 + Refine 管理台应用模板。提供契约生成的管理 API、Cookie 会话、安装引导、嵌入 SPA 与 CLI 生命周期（`init` / `serve` / `stop` / `restart` / `reload`）。
 

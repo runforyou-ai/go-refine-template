@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/runforyou-ai/app-template/internal/config"
+	"github.com/runforyou-ai/go-refine-template/internal/config"
 	"github.com/spf13/cobra"
 )
 

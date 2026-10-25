@@ -6,9 +6,9 @@ server:
 postgres:
   host: postgres
   port: 5432
-  user: app-template
-  password: app-template
-  database: app-template
+  user: go-refine-template
+  password: go-refine-template
+  database: go-refine-template
   sslmode: disable
 log:
-  dir: /var/log/app-template
+  dir: /var/log/go-refine-template

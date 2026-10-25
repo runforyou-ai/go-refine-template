@@ -2,9 +2,9 @@ services:
   postgres:
     image: postgres:18.6-trixie
     environment:
-      POSTGRES_DB: app-template
-      POSTGRES_USER: app-template
-      POSTGRES_PASSWORD: app-template
+      POSTGRES_DB: go-refine-template
+      POSTGRES_USER: go-refine-template
+      POSTGRES_PASSWORD: go-refine-template
     ports:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
@@ -16,13 +16,13 @@ services:
       retries: 10
 
   app:
-    image: ghcr.io/runforyou-ai/app-template:latest
+    image: ghcr.io/runforyou-ai/go-refine-template:latest
     build: .
     ports:
       - "127.0.0.1:${SERVER_PORT:-3000}:3000"
     volumes:
-      - ./config.yaml:/etc/app-template/config.yaml:ro
-      - ${LOG_DIR:-./data/logs}:/var/log/app-template
+      - ./config.yaml:/etc/go-refine-template/config.yaml:ro
+      - ${LOG_DIR:-./data/logs}:/var/log/go-refine-template
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://127.0.0.1:3000/health"]
       interval: 10s

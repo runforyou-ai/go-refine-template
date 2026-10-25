@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/runforyou-ai/app-template/internal/migrate"
+	"github.com/runforyou-ai/go-refine-template/internal/migrate"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"
@@ -57,9 +57,9 @@ func openOnce() (*bun.DB, error) {
 		}
 		port = n
 	}
-	user := envOr("TEST_POSTGRES_USER", "app-template")
-	password := envOr("TEST_POSTGRES_PASSWORD", "app-template")
-	database := envOr("TEST_POSTGRES_DATABASE", "app-template_test")
+	user := envOr("TEST_POSTGRES_USER", "go-refine-template")
+	password := envOr("TEST_POSTGRES_PASSWORD", "go-refine-template")
+	database := envOr("TEST_POSTGRES_DATABASE", "go-refine-template_test")
 	sslmode := envOr("TEST_POSTGRES_SSLMODE", "disable")
 	if !strings.HasSuffix(database, "_test") {
 		return nil, fmt.Errorf("TEST_POSTGRES_DATABASE %q must end with _test", database)

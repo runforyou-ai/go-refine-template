@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE: ghcr.io/runforyou-ai/app-template
+  IMAGE: ghcr.io/runforyou-ai/go-refine-template
 
 jobs:
   verify:
@@ -19,22 +19,22 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: app-template
-          POSTGRES_PASSWORD: app-template
-          POSTGRES_DB: app-template_test
+          POSTGRES_USER: go-refine-template
+          POSTGRES_PASSWORD: go-refine-template
+          POSTGRES_DB: go-refine-template_test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U app-template -d app-template_test"
+          --health-cmd "pg_isready -U go-refine-template -d go-refine-template_test"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
     env:
       TEST_POSTGRES_HOST: localhost
       TEST_POSTGRES_PORT: "5432"
-      TEST_POSTGRES_USER: app-template
-      TEST_POSTGRES_PASSWORD: app-template
-      TEST_POSTGRES_DATABASE: app-template_test
+      TEST_POSTGRES_USER: go-refine-template
+      TEST_POSTGRES_PASSWORD: go-refine-template
+      TEST_POSTGRES_DATABASE: go-refine-template_test
       TEST_POSTGRES_SSLMODE: disable
     steps:
       - uses: actions/checkout@v4
@@ -106,7 +106,7 @@ jobs:
       - name: Build Linux binaries (amd64 + arm64)
         run: |
           make build amd64
-          CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags "-s -w" -o build/app-template-linux-arm64 .
+          CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags "-s -w" -o build/go-refine-template-linux-arm64 .
 
       - name: Compose up
         env:

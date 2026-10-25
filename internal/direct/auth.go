@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 
-	"github.com/runforyou-ai/app-template/internal/auth"
-	"github.com/runforyou-ai/app-template/internal/contract"
-	"github.com/runforyou-ai/app-template/internal/domain"
+	"github.com/runforyou-ai/go-refine-template/internal/auth"
+	"github.com/runforyou-ai/go-refine-template/internal/contract"
+	"github.com/runforyou-ai/go-refine-template/internal/domain"
 )
 
 var (
